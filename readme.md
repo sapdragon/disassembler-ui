@@ -31,6 +31,11 @@ Navigate to the project's root directory and install the required Python depende
 pip install -r requirements.txt
 ```
 
+For [Python ver >= 3.12.x](https://stackoverflow.com/a/77360702) need to additionaly install `setuptools`:
+```bash
+pip install setuptools
+```
+
 3. **Frontend Setup (React):**
 
 Navigate to the `frontend` directory and install the necessary Node.js packages:
