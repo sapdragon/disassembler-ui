@@ -6,13 +6,15 @@ This project provides a web-based application for disassembling, assembling, and
 
 ## Features
 
-* **Disassembly:** Converts machine code into human-readable assembly language. Supports both x86 and x64 architectures.
-* **Assembly:** Converts assembly language into machine code.
-* **Emulation (powered by Unicorn Engine):** Execute code step-by-step and inspect register and flag values after each instruction. Includes stack support.
-* **Interactive Interface:** User-friendly web interface built with React, facilitating easy navigation and code manipulation.
-* **Register and Flag Visualization:**  Real-time display of register and flag values during emulation.
-* **Stack Visualization:** View the state of the stack during emulation. ( Nope )
-* **Cross-Platform Compatibility:** Accessible from any modern web browser, regardless of operating system.
+* **Disassembly:** Converts machine code (hex bytes) into human-readable assembly language. Supports x86_64, ARM, and MIPS architectures.
+* **Assembly:** Converts assembly language into machine code (hex bytes). Supports x86_64, ARM, and MIPS.
+* **Emulation (powered by Unicorn Engine):**  Executes code step-by-step and inspects register values after each instruction. Supports x86_64 (including floating-point and SSE registers), ARM, and MIPS.
+* **Automatic Input Type Detection:**  Intelligently identifies assembly, hexadecimal, or shellcode input formats. No manual selection required.
+* **Interactive Interface:** User-friendly web interface built with React for easy code manipulation and navigation.
+* **Register Visualization:** Real-time display of register values during emulation, specific to the selected architecture.
+* **Architecture Selection:**  Easily switch between x86_64, ARM, and MIPS architectures.
+* **Emulation Control:** Enable/disable emulation as needed.
+* **Cross-Platform Compatibility:**  Works in any modern web browser, independent of the operating system.
 
 
 ## Installation

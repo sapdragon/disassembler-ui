@@ -13,6 +13,10 @@
   }
 }
 
+.collapse { /* Or the appropriate parent element */
+  overflow: visible;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
