@@ -2,7 +2,7 @@
 
 [![Demo](images/preview.gif)](images/preview.gif)
 
-This project provides a web-based application for disassembling, assembling, and *emulating* x86/x64 code. Built using React (frontend), Python (backend), and Unicorn Engine for emulation, 
+This project provides a web-based application for disassembling, assembling, and *emulating* code. Built using React (frontend), Python (backend), and Unicorn Engine for emulation, 
 
 ## Features
 
