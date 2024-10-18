@@ -1,4 +1,4 @@
-# Web-based x86/x64 Disassembler/Assembler and Emulator
+# Web-based Disassembler/Assembler and Emulator
 
 [![Demo](images/preview.gif)](images/preview.gif)
 
