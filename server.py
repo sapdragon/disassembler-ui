@@ -80,10 +80,8 @@ class Emulator:
         self.stack_size = 2 * 1024 * 1024  # 2 MB
         self.stack_base = self.memory_base + self.memory_size + self.stack_size
 
-        # Map memory for code
         self.mu.mem_map(self.memory_base, self.memory_size)
         
-        # Map memory for stack
         self.mu.mem_map(self.memory_base + self.memory_size, self.stack_size)
         
         self.reset_registers()
@@ -121,7 +119,7 @@ def process_code(code, arch, emulation_enabled):
     """Processes code based on detected input type."""
     input_type = detect_input_type(code)
 
-    if input_type == 'hex': # hex like 0x90 0x90 0x90
+    if input_type == 'hex': 
         code = bytes.fromhex(code.replace('0x', '').replace(' ', '').replace('\n', ''))
         return disassemble_and_emulate(code, arch, emulation_enabled)
     elif input_type == 'shellcode':
@@ -130,7 +128,7 @@ def process_code(code, arch, emulation_enabled):
     else:
         return assemble_and_emulate(code, arch, emulation_enabled)
 
-async def handle_connection(websocket, path):
+async def process_client_message(websocket, path):
     logger.info("New client connected")
     try:
         async for message in websocket:
@@ -168,7 +166,6 @@ def assemble_and_emulate(code, arch, emulation_enabled):
 
 def process_shellcode(code, arch, emulation_enabled):
     try:
-        # Remove common shellcode formatting
         code = code.replace('\\x', '').replace('0x', '').replace(',', '').replace(' ', '')
         shellcode_bytes = bytes.fromhex(code)
         return disassemble_and_emulate(shellcode_bytes, arch, emulation_enabled)
@@ -217,6 +214,10 @@ def disassemble_and_emulate(code, arch, emulation_enabled):
         }
     except CsError as e:
         raise ValueError(f"Disassembly error: {e}")
+
+async def handle_connection(websocket, path):
+    async for message in websocket:
+        await asyncio.create_task(process_client_message(websocket, message))
 
 async def main():
     server = await websockets.serve(handle_connection, "localhost", 8765)
